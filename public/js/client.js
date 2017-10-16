@@ -2,7 +2,7 @@ window.onload = function () {
 
   var socket = io();
   
-  let newMessageEvent = config.events.newMessage;
+  let newMessageEvent = 'new message';
 
   $('form').submit(function () {
     socket.emit(newMessageEvent, $('#m').val());
