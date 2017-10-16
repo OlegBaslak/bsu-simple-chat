@@ -1,5 +1,6 @@
 var path = require('path'),
     config = require('./config'),
+    async = require('async'),
     express = require('express'),
     app = require('express')(),
     http = require('http').Server(app),
@@ -21,10 +22,7 @@ io.on('connection', function (socket) {
     });
 });
 
-var port = config.get('port');
-http.listen(port, function () {
-    console.log('Express server listening on port ' + port);
+http.listen(process.env.PORT || config.get('port'), process.env.IP || "0.0.0.0", function () {
+    var addr = http.address();
+    console.log("Chat server listening at", addr.address + ":" + addr.port);
 });
-
-// logger.debug('Server has been started on port ' + port);
-//app.use(express.static(__dirname + '/public'));
