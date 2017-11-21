@@ -10,7 +10,7 @@ var app = express();
 var server = require('./app/socket')(app);
 
 var port = process.env.PORT || config.port;
-var ip = process.env.IP || "0.0.0.0";
+var ip = process.env.IP || config.ip;
 
 app.use(express.static(path.join(__dirname, '/public')));
 app.use("/public", express.static(path.join(__dirname, '/public')));

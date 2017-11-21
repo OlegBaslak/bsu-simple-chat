@@ -4,29 +4,36 @@ var config = require('../config');
 
 /**
  * Encapsulates all events supported by socket for listening and emiting
- * @param {SocketIO.Server} io 
+ * @param {SocketIO.Server} io
  */
 var ioEvents = function (io) {
 
-    let connectionEvent = config.events.connection;
-    let newMessageEvent = config.events.newMessage;
+    let newMessageEvent = 'new message';
+    let messageToClientsEvent = 'new message to clients';
+    let newUserEvent = 'new user';
+    let connectionEvent = 'connect';
+    let disconnectEvent = 'disconnect';
+    let identifyEvent = 'identify';
 
     io.on(connectionEvent, function (socket) {
-        console.log('a user connected');
-
-        socket.on('disconnect', function () {
-            console.log('user disconnected');
-        });
+        var ID = "U" + (socket.id).toString().substr(0, 5);
+        io.emit(newUserEvent, ID)
+        console.log('user ' + ID + ' connected');
 
         socket.on(newMessageEvent, function (msg) {
-            console.log('message: ' + msg);
-            io.emit(newMessageEvent, msg);
+            console.log("new message from " + ID + ': ' + msg);
+            io.emit(messageToClientsEvent, ID, msg);
+        });
+
+        socket.on(disconnectEvent, function () {
+            console.log('user disconnected');
+            io.emit(disconnectEvent, ID)
         });
     });
-}
+};
 
 /**
-* Initializes Socket.io
+ * Initializes Socket.io
  * @param {Express} app Express server that works with socket
  */
 var init = function (app) {
@@ -36,6 +43,6 @@ var init = function (app) {
     ioEvents(io);
 
     return server;
-}
+};
 
 module.exports = init;
