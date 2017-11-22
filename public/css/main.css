@@ -9,26 +9,25 @@ body {
 }
 
 form {
-    padding: 10px;
     width: 100%;
     height: 100%;
     background: azure;
+    align-content: center;
 }
 
 form input {
-
+    width: 40%;
+    margin: 1%;
 }
 
-form button#send-msg-button {
-    position: absolute;
-    right: -57px;
-    bottom: -13px;
+form button {
+    width: 10%;
+    margin: 1%;
 }
 
-form input#nickname-input {
-    position: absolute;
-    left: -55px;
-    bottom: -13px;
+form input#nickname {
+    width: 20%;
+    margin: 1%;
 }
 
 .container {
@@ -50,6 +49,7 @@ form input#nickname-input {
     float: left;
     clear: right;
     border: 5px solid #c3c3c3;
+    overflow: auto;
 }
 
 .chat-right {
@@ -59,6 +59,7 @@ form input#nickname-input {
     width: 25%;
     height: 100%;
     border: 5px solid #c3c3c3;
+    overflow: auto;
 }
 
 #chat-content {
@@ -72,7 +73,6 @@ form input#nickname-input {
 }
 
 #messages {
-    overflow-y: scroll;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -87,7 +87,6 @@ form input#nickname-input {
 }
 
 #users {
-    overflow-y: scroll;
     list-style-type: none;
     margin: 0;
     padding: 0;

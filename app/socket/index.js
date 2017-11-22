@@ -24,14 +24,11 @@ var ioEvents = function (io) {
         io.emit(newUserEvent, ID)
         console.log('user ' + ID + ' connected');
 
-        sockets.push(socket.nickname);
-
         socket.on(newMessageEvent, function (msg) {
             console.log("new message from id " + ID + ' (user: ' + socket.nickname + '): ' + msg);
             var text = String(msg || '');
             io.emit(messageToClientsEvent, socket.nickname, text);
         });
-
 
         socket.on(disconnectEvent, function () {
             console.log('user disconnected');
