@@ -2,22 +2,41 @@
 <html>
 
 <head>
-  <title>Socket.IO chat</title>
-  <link rel="stylesheet" type="text/css" href="css/main.css" />
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="js/client.js"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <title>Socket.IO chat</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/client.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <ul id="messages"></ul>
-  <form action="">
-    <input id="m" autocomplete="off" />
-    <button>Send</button>
-  </form>
-  <script>
+<div class="container">
+    <div id="chat-content">
+        <div class="chat-left">
+            <h2>Chat messages: </h2>
+            <div id="messages-list">
+                <ul id="messages"></ul>
+            </div>
+        </div>
+        <div class="chat-right">
+            <h2>Users online: </h2>
+            <div id="users-list">
+                <ul id="users"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="chat-bottom">
+        <form action="">
+            <input type="text" id="nickname" placeholder="Your Name">
+            <input id="message" autocomplete="off" placeholder="Message text"/>
+            <button id="send-message">Send</button>
+        </form>
+    </div>
+</div>
+<script>
 
-  </script>
+</script>
 </body>
 
 </html>
